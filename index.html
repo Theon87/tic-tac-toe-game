@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" />
     <title>Tic-Tac-Toe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
@@ -10,37 +10,43 @@
   <body>
     <h1>TIC-TAC-TOE</h1>
 
-    <!-- 1 Player -->
-    <!-- 2 Player -->
-    <div id="p1">
-      <h2>1 Player</h2>
-    </div>
-    <h2 id="or">OR</h2>
-    <div id="p2">
-      <h2>2 Player</h2>
+    <!-- PLAY BUTTON -->
+
+    <div id="play">
+      <h2>Play</h2>
     </div>
 
-    <!-- ----------------------------------------------------------------- -->
+    <!-- GAME BOARD -->
 
     <!-- 9 box grid -->
     <div id="grid">
       <table id="table">
         <tr class="grid-rows">
-          <td id="A"></td>
-          <td id="B"></td>
-          <td id="C"></td>
+          <td id="topLeft"></td>
+          <td id="topMiddle"></td>
+          <td id="topRight"></td>
         </tr>
         <tr class="grid-rows">
-          <td id="D"></td>
-          <td id="E"></td>
-          <td id="F"></td>
+          <td id="middleLeft"></td>
+          <td id="middleMiddle"></td>
+          <td id="middleRight"></td>
         </tr>
         <tr class="grid-rows">
-          <td id="G"></td>
-          <td id="H"></td>
-          <td id="I"></td>
+          <td id="bottomLeft"></td>
+          <td id="bottomMiddle"></td>
+          <td id="bottomRight"></td>
         </tr>
       </table>
+    </div>
+
+    <!-- RESET BUTTON -->
+    <div>
+      <h2 id="reset">Reset</h2>
+    </div>
+
+    <!-- PLAYER "X" WINS OR PLAYER "O" WINS -->
+    <div>
+      <h2 id="result"></h2>
     </div>
     <script src="main.js"></script>
   </body>
