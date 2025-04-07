@@ -135,8 +135,6 @@ function setupGameBoard() {
         } else {
           currentPlayer = currentPlayer === "X" ? "O" : "X";
         }
-
-        console.log(board);
       }
     });
   });
