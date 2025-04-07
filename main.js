@@ -4,6 +4,7 @@ const resetButton = document.getElementById("reset");
 const endButton = document.getElementById("end");
 const playAgainButton = document.getElementById("playAgain");
 
+let lightDarkTheme = document.getElementById("lightDarkTheme");
 let summary = document.getElementById("summary");
 let result = document.getElementById("result");
 
@@ -58,8 +59,8 @@ function playButton() {
   play.addEventListener("click", function () {
     gameOver = false;
     currentPlayer = "X";
+    lightDarkTheme.style.display = "block";
     gameBoard.style.display = "table";
-    // resetButton.style.display = "block";
     play.style.display = "none";
     endButton.style.display = "block";
     playAgainButton.style.display = "block";
@@ -106,6 +107,7 @@ function endGame() {
     result.innerHTML = "";
     summary.innerHTML = updateSummaryTable();
     summary.style.display = "table";
+    lightDarkTheme.style.display = "none";
     gameBoard.style.display = "none";
     endButton.style.display = "none";
     resetButton.style.display = "block";
