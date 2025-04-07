@@ -52,9 +52,10 @@ h3 {
   display: none;
   border: 1px solid white;
   border-radius: 10px;
-  background-color: red;
+  background-color: #cc0000;
   padding: 15px;
   text-shadow: none;
+  box-shadow: 0 5px #333;
 }
 
 #playAgain {
@@ -64,6 +65,8 @@ h3 {
   background-color: green;
   padding: 15px;
   text-shadow: none;
+  box-shadow: 0 5px #333;
+  box-shadow: 3px 3px 3px 0px #999;
 }
 
 #play h2,
@@ -73,4 +76,31 @@ h3 {
   background-color: green;
   padding: 15px;
   text-shadow: none;
+  box-shadow: 0 5px #333;
+}
+
+#play h2:hover,
+#playAgain:hover {
+  background-color: #00aa00;
+  box-shadow: 0 5px #333;
+}
+
+#play h2:active,
+#playAgain:active {
+  background-color: #00aa00;
+  box-shadow: 3px 3px 3px 0px #999;
+  transform: translateY(4px);
+}
+
+#end:hover,
+#reset:hover {
+  background-color: red;
+  box-shadow: 3px 3px 3px 0px #999;
+}
+
+#end:active,
+#reset:active {
+  background-color: #660000;
+  box-shadow: 3px 3px 3px 0px #999;
+  transform: translateY(4px);
 }
