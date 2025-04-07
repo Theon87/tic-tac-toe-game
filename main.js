@@ -2,6 +2,7 @@ const play = document.getElementById("play");
 const gameBoard = document.getElementById("gameBoard");
 const resetButton = document.getElementById("reset");
 const endButton = document.getElementById("end");
+const playAgainButton = document.getElementById("playAgain");
 
 let summary = document.getElementById("summary");
 let result = document.getElementById("result");
@@ -9,6 +10,7 @@ let result = document.getElementById("result");
 let currentPlayer = ""; // 'X' or 'O'
 let cells = document.querySelectorAll("td");
 let board = ["", "", "", "", "", "", "", "", ""];
+let gameOver = false;
 
 resetButton.addEventListener("click", resetGame);
 
@@ -61,32 +63,33 @@ function checkDraw() {
 
 function playButton() {
   play.addEventListener("click", function () {
+    gameOver = false;
     currentPlayer = "X";
     gameBoard.style.display = "table";
-    reset.style.display = "block";
+    resetButton.style.display = "block";
     endButton.style.display = "block";
-    summary.style.display = "table";
     play.style.display = "none";
+    playAgainButton.style.display = "block";
   });
 }
 
 function resetGame() {
-  board = ["", "", "", "", "", "", "", "", ""];
-  cells.forEach((cell) => (cell.innerHTML = ""));
-  // result.innerHTML = "";
-  currentPlayer = "X";
-  gameBoard.style.display = "table";
-  reset.style.display = "block";
-  endButton.style.display = "block";
-  summary.style.display = "none";
-  play.style.display = "none";
+  resetButton.addEventListener("click", function () {
+    gameOver = false;
+    board = ["", "", "", "", "", "", "", "", ""];
+    cells.forEach((cell) => (cell.innerHTML = ""));
+    result.innerHTML = "";
+  });
 }
 
 function playAgain() {
-  board = ["", "", "", "", "", "", "", "", ""];
-  cells.forEach((cell) => (cell.innerHTML = ""));
-  result.innerHTML = "";
-  currentPlayer = "X";
+  playAgainButton.addEventListener("click", function () {
+    gameOver = false;
+    board = ["", "", "", "", "", "", "", "", ""];
+    cells.forEach((cell) => (cell.innerHTML = ""));
+    result.innerHTML = "";
+    currentPlayer = "X";
+  });
 }
 
 function endGame() {
@@ -94,11 +97,12 @@ function endGame() {
     result.innerHTML = "";
     summary.innerHTML = updateSummaryTable();
     summary.style.display = "table";
+    gameBoard.style.display = "none";
+    endButton.style.display = "none";
   });
 }
 
 function setupGameBoard() {
-  let gameOver = false;
   cells.forEach((cell, index) => {
     cell.addEventListener("click", function () {
       if (cell.innerHTML === "" && !gameOver) {
@@ -131,6 +135,8 @@ function setupGameBoard() {
 function playGame() {
   playButton();
   setupGameBoard();
+  playAgain();
+  resetGame();
   endGame();
 }
 
