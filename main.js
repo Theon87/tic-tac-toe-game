@@ -79,6 +79,18 @@ function resetGame() {
     board = ["", "", "", "", "", "", "", "", ""];
     cells.forEach((cell) => (cell.innerHTML = ""));
     result.innerHTML = "";
+    currentPlayer = "X";
+    countXWins = 0;
+    countOWins = 0;
+    countXLosses = 0;
+    countOLosses = 0;
+    updateSummaryTable();
+    summary.style.display = "none";
+    gameBoard.style.display = "table";
+    resetButton.style.display = "block";
+    endButton.style.display = "block";
+    play.style.display = "none";
+    playAgainButton.style.display = "block";
   });
 }
 
@@ -89,6 +101,12 @@ function playAgain() {
     cells.forEach((cell) => (cell.innerHTML = ""));
     result.innerHTML = "";
     currentPlayer = "X";
+    summary.style.display = "none";
+    gameBoard.style.display = "table";
+    resetButton.style.display = "block";
+    endButton.style.display = "block";
+    play.style.display = "none";
+    playAgainButton.style.display = "block";
   });
 }
 
