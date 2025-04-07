@@ -1,12 +1,12 @@
 * {
-  background-color: black;
+  background-color: rgb(248, 242, 242);
   margin: 10px;
 }
 
 h1,
 div {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: white;
+  color: black;
   padding: 2px;
   display: flex;
   flex-direction: column;
@@ -18,11 +18,11 @@ div {
 #gameBoard {
   border-collapse: collapse;
   padding: 5px;
-  border: 2px solid white;
+  border: 5px solid black;
   width: 350px;
   height: 350px;
   display: none;
-  box-shadow: 1px 1px 8px lightgreen;
+  box-shadow: 10px 10px 20px 8px lightgray;
 }
 
 #summary {
@@ -30,7 +30,7 @@ div {
 }
 
 td {
-  border: 1px solid white;
+  border: 2px solid black;
   text-align: center;
   font-size: 200%;
   width: 33%;
@@ -103,4 +103,8 @@ h3 {
   background-color: #660000;
   box-shadow: 3px 3px 3px 0px #999;
   transform: translateY(4px);
+}
+
+#gameBoard td:active {
+  background-color: #eeeeef;
 }
