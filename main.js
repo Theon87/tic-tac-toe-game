@@ -26,27 +26,22 @@ const winningCombos = [
 ];
 
 let countXWins = 0;
-let countOLosses = 0;
 
 let countOWins = 0;
-let countXLosses = 0;
 
 function updateSummaryTable() {
   return `
         <tr>
           <td></td>
           <td>WINS</td>
-          <td>LOSES</td>
         </tr>
         <tr>
           <td>X</td>
           <td>${countXWins}</td>
-          <td>${countXLosses}</td>
         </tr>
         <tr>
           <td>O</td>
           <td>${countOWins}</td>
-          <td>${countOLosses}</td>
         </tr>
 `;
 }
@@ -82,8 +77,6 @@ function resetGame() {
     currentPlayer = "X";
     countXWins = 0;
     countOWins = 0;
-    countXLosses = 0;
-    countOLosses = 0;
     updateSummaryTable();
     summary.style.display = "none";
     gameBoard.style.display = "table";
@@ -102,6 +95,7 @@ function playAgain() {
     result.innerHTML = "";
     currentPlayer = "X";
     summary.style.display = "none";
+    resetButton.style.display = "none";
     gameBoard.style.display = "table";
     endButton.style.display = "block";
     play.style.display = "none";
@@ -132,10 +126,8 @@ function setupGameBoard() {
           gameOver = true;
           if (currentPlayer === "X") {
             countXWins++;
-            countOLosses++;
           } else {
             countOWins++;
-            countXLosses++;
           }
         } else if (checkDraw()) {
           result.innerHTML = "DRAW";
