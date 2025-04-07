@@ -11,6 +11,8 @@ let currentPlayer = ""; // 'X' or 'O'
 let cells = document.querySelectorAll("td");
 let board = ["", "", "", "", "", "", "", "", ""];
 let gameOver = false;
+let countXWins = 0;
+let countOWins = 0;
 
 resetButton.addEventListener("click", resetGame);
 
@@ -24,10 +26,6 @@ const winningCombos = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-
-let countXWins = 0;
-
-let countOWins = 0;
 
 function updateSummaryTable() {
   return `
