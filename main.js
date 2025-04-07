@@ -35,8 +35,8 @@ function updateSummaryTable() {
   return `
         <tr>
           <td></td>
-          <td id="wins">WINS</td>
-          <td id="loses">LOSES</td>
+          <td>WINS</td>
+          <td>LOSES</td>
         </tr>
         <tr>
           <td>X</td>
@@ -66,9 +66,9 @@ function playButton() {
     gameOver = false;
     currentPlayer = "X";
     gameBoard.style.display = "table";
-    resetButton.style.display = "block";
-    endButton.style.display = "block";
+    // resetButton.style.display = "block";
     play.style.display = "none";
+    endButton.style.display = "block";
     playAgainButton.style.display = "block";
   });
 }
@@ -103,7 +103,7 @@ function playAgain() {
     currentPlayer = "X";
     summary.style.display = "none";
     gameBoard.style.display = "table";
-    resetButton.style.display = "block";
+    // resetButton.style.display = "block";
     endButton.style.display = "block";
     play.style.display = "none";
     playAgainButton.style.display = "block";
@@ -117,6 +117,7 @@ function endGame() {
     summary.style.display = "table";
     gameBoard.style.display = "none";
     endButton.style.display = "none";
+    resetButton.style.display = "block";
   });
 }
 
