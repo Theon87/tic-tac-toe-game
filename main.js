@@ -87,7 +87,7 @@ function resetGame() {
     updateSummaryTable();
     summary.style.display = "none";
     gameBoard.style.display = "table";
-    resetButton.style.display = "block";
+    resetButton.style.display = "none";
     endButton.style.display = "block";
     play.style.display = "none";
     playAgainButton.style.display = "block";
@@ -103,7 +103,6 @@ function playAgain() {
     currentPlayer = "X";
     summary.style.display = "none";
     gameBoard.style.display = "table";
-    // resetButton.style.display = "block";
     endButton.style.display = "block";
     play.style.display = "none";
     playAgainButton.style.display = "block";
