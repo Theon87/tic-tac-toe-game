@@ -4,6 +4,7 @@
 }
 
 h1,
+h2,
 div {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: black;
@@ -11,7 +12,7 @@ div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 25px;
+  margin: 20px;
   text-shadow: 3px 3px 5px pink;
 }
 
@@ -26,7 +27,11 @@ div {
 }
 
 #summary {
+  border-collapse: collapse;
+  padding: 5px;
+  border: 5px solid black;
   display: none;
+  box-shadow: 10px 10px 20px 8px lightgray;
 }
 
 td {
@@ -37,14 +42,14 @@ td {
   height: 33%;
 }
 
-h3 {
-  display: none;
-}
-
 #player1Turn,
 #player2Turn {
   display: none;
   padding: 3px;
+}
+
+#lightDarkTheme {
+  display: block;
 }
 
 #reset,
@@ -107,4 +112,37 @@ h3 {
 
 #gameBoard td:active {
   background-color: #eeeeef;
+}
+
+/* ================================================================================================== */
+
+/* Dark Theme */
+
+.dark-theme {
+  background-color: black;
+  color: white;
+}
+
+.dark-theme body,
+.dark-theme div,
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3 {
+  background-color: black;
+  color: white;
+}
+
+.dark-theme #gameBoard,
+.dark-theme #summary {
+  box-shadow: 4px 4px 8px 0px white;
+  border: 2px solid white;
+}
+
+.dark-theme td {
+  background-color: black;
+  border: 2px solid white;
+}
+
+.dark-theme #gameBoard td:active {
+  background-color: #333;
 }

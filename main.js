@@ -3,11 +3,12 @@ const gameBoard = document.getElementById("gameBoard");
 const resetButton = document.getElementById("reset");
 const endButton = document.getElementById("end");
 const playAgainButton = document.getElementById("playAgain");
+const lightDarkTheme = document.getElementById("lightDarkTheme");
 
 let summary = document.getElementById("summary");
 let result = document.getElementById("result");
 
-let currentPlayer = ""; // 'X' or 'O'
+let currentPlayer = "";
 let cells = document.querySelectorAll("td");
 let board = ["", "", "", "", "", "", "", "", ""];
 let gameOver = false;
@@ -59,7 +60,6 @@ function playButton() {
     gameOver = false;
     currentPlayer = "X";
     gameBoard.style.display = "table";
-    // resetButton.style.display = "block";
     play.style.display = "none";
     endButton.style.display = "block";
     playAgainButton.style.display = "block";
@@ -147,3 +147,26 @@ function playGame() {
 }
 
 playGame();
+
+function loadTheme() {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.documentElement.classList.add("dark-theme");
+  }
+}
+
+function changeLightDarkTheme() {
+  lightDarkTheme.addEventListener("click", function () {
+    // document.body.classList.toggle("dark-theme");
+    document.documentElement.classList.toggle("dark-theme");
+
+    if (document.documentElement.classList.contains("dark-theme")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
+
+loadTheme();
+changeLightDarkTheme();
