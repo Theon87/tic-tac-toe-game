@@ -3,6 +3,15 @@
   margin: 10px;
 }
 
+html,
+body,
+div,
+h1,
+#result {
+  background: url(assets/lightBackground.avif) no-repeat center fixed;
+  background-size: cover;
+}
+
 h1,
 h2,
 div {
@@ -42,14 +51,15 @@ td {
   height: 33%;
 }
 
-#player1Turn,
-#player2Turn {
-  display: none;
-  padding: 3px;
-}
-
 #lightDarkTheme {
   display: block;
+  border: 1px solid white;
+  border-radius: 50px;
+  background-color: #777;
+  padding: 15px;
+  text-shadow: none;
+  box-shadow: 0 5px #333;
+  width: 30px;
 }
 
 #reset,
@@ -82,6 +92,16 @@ td {
   padding: 15px;
   text-shadow: none;
   box-shadow: 0 5px #333;
+}
+
+#lightDarkTheme:hover {
+  background-color: #555;
+}
+
+#lightDarkTheme:active {
+  background-color: #999;
+  box-shadow: inset;
+  transform: translateY(4px);
 }
 
 #play h2:hover,
@@ -120,22 +140,49 @@ td {
 
 .dark-theme {
   background-color: black;
+  background: url(assets/darkBackground.avif) no-repeat center fixed;
+  background-size: cover;
   color: white;
 }
 
+.dark-theme html,
 .dark-theme body,
 .dark-theme div,
 .dark-theme h1,
-.dark-theme h2,
-.dark-theme h3 {
-  background-color: black;
-  color: white;
+.dark-theme #result {
+  background: url(assets/darkBackground.avif) no-repeat center fixed;
+  background-size: cover;
+}
+
+h3 {
+  color: black;
+  background-color: white;
+}
+
+.dark-theme #lightDarkTheme {
+  background-color: #eee;
+}
+
+#lightDarkTheme:hover {
+  background-color: #fff;
+}
+
+#lightDarkTheme:active {
+  background-color: #999;
+  box-shadow: inset;
+  transform: translateY(4px);
 }
 
 .dark-theme #gameBoard,
 .dark-theme #summary {
   box-shadow: 4px 4px 8px 0px white;
   border: 2px solid white;
+  color: white;
+}
+
+.dark-theme #result {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .dark-theme td {
