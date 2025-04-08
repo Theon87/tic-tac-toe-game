@@ -157,7 +157,6 @@ function loadTheme() {
 
 function changeLightDarkTheme() {
   lightDarkTheme.addEventListener("click", function () {
-    // document.body.classList.toggle("dark-theme");
     document.documentElement.classList.toggle("dark-theme");
 
     if (document.documentElement.classList.contains("dark-theme")) {
