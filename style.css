@@ -194,7 +194,6 @@ h3 {
   background-color: #333;
 }
 
-
 /* ================================================================================================== */
 
 /* Media Queries */
@@ -218,5 +217,23 @@ h3 {
   #gameBoard {
     width: 290px;
     height: 290px;
+  }
+}
+
+/* ================================================================================================== */
+
+/* Winning Combo */
+
+.winningCell {
+  background-color: gold !important;
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    background-color: gold;
+  }
+  to {
+    background-color: orange;
   }
 }

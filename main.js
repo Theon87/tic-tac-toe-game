@@ -45,14 +45,17 @@ function updateSummaryTable() {
 `;
 }
 
-function checkWin(player) {
-  return winningCombos.some((combo) => {
-    return combo.every((index) => board[index] === player);
-  });
-}
-
 function checkDraw() {
   return board.every((cell) => cell !== "");
+}
+
+function checkWin(player) {
+  for (let combo of winningCombos) {
+    if (combo.every((index) => board[index] === player)) {
+      return combo;
+    }
+  }
+  return null;
 }
 
 function playButton() {
@@ -82,6 +85,9 @@ function resetGame() {
     endButton.style.display = "block";
     play.style.display = "none";
     playAgainButton.style.display = "block";
+    cells.forEach((cell) => {
+      cell.classList.remove("winningCell");
+    });
   });
 }
 
@@ -98,6 +104,9 @@ function playAgain() {
     endButton.style.display = "block";
     play.style.display = "none";
     playAgainButton.style.display = "block";
+    cells.forEach((cell) => {
+      cell.classList.remove("winningCell");
+    });
   });
 }
 
@@ -119,9 +128,15 @@ function setupGameBoard() {
         cell.innerHTML = currentPlayer;
         board[index] = currentPlayer;
 
-        if (checkWin(currentPlayer)) {
+        const winningCombo = checkWin(currentPlayer);
+        if (winningCombo) {
           result.innerHTML = `PLAYER "${currentPlayer}" WINS!`;
           gameOver = true;
+
+          winningCombo.forEach((index) => {
+            cells[index].classList.add("winningCell");
+          });
+
           if (currentPlayer === "X") {
             countXWins++;
           } else {
