@@ -45,14 +45,17 @@ function updateSummaryTable() {
 `;
 }
 
-function checkWin(player) {
-  return winningCombos.some((combo) => {
-    return combo.every((index) => board[index] === player);
-  });
-}
-
 function checkDraw() {
   return board.every((cell) => cell !== "");
+}
+
+function checkWin(player) {
+  for (let combo of winningCombos) {
+    if (combo.every((index) => board[index] === player)) {
+      return combo;
+    }
+  }
+  return null;
 }
 
 function playButton() {
@@ -82,6 +85,9 @@ function resetGame() {
     endButton.style.display = "block";
     play.style.display = "none";
     playAgainButton.style.display = "block";
+    cells.forEach((cell) => {
+      cell.classList.remove("winningCell");
+    });
   });
 }
 
@@ -98,6 +104,9 @@ function playAgain() {
     endButton.style.display = "block";
     play.style.display = "none";
     playAgainButton.style.display = "block";
+    cells.forEach((cell) => {
+      cell.classList.remove("winningCell");
+    });
   });
 }
 
@@ -122,6 +131,38 @@ function setupGameBoard() {
         if (checkWin(currentPlayer)) {
           result.innerHTML = `PLAYER "${currentPlayer}" WINS!`;
           gameOver = true;
+          if (currentPlayer === "X") {
+            countXWins++;
+          } else {
+            countOWins++;
+          }
+        } else if (checkDraw()) {
+          result.innerHTML = "DRAW";
+          gameOver = true;
+        } else {
+          currentPlayer = currentPlayer === "X" ? "O" : "X";
+        }
+      }
+    });
+  });
+}
+
+function setupGameBoard() {
+  cells.forEach((cell, index) => {
+    cell.addEventListener("click", function () {
+      if (cell.innerHTML === "" && !gameOver) {
+        cell.innerHTML = currentPlayer;
+        board[index] = currentPlayer;
+
+        const winningCombo = checkWin(currentPlayer);
+        if (winningCombo) {
+          result.innerHTML = `PLAYER "${currentPlayer}" WINS!`;
+          gameOver = true;
+
+          winningCombo.forEach((index) => {
+            cells[index].classList.add("winningCell");
+          });
+
           if (currentPlayer === "X") {
             countXWins++;
           } else {
