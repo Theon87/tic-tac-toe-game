@@ -128,32 +128,6 @@ function setupGameBoard() {
         cell.innerHTML = currentPlayer;
         board[index] = currentPlayer;
 
-        if (checkWin(currentPlayer)) {
-          result.innerHTML = `PLAYER "${currentPlayer}" WINS!`;
-          gameOver = true;
-          if (currentPlayer === "X") {
-            countXWins++;
-          } else {
-            countOWins++;
-          }
-        } else if (checkDraw()) {
-          result.innerHTML = "DRAW";
-          gameOver = true;
-        } else {
-          currentPlayer = currentPlayer === "X" ? "O" : "X";
-        }
-      }
-    });
-  });
-}
-
-function setupGameBoard() {
-  cells.forEach((cell, index) => {
-    cell.addEventListener("click", function () {
-      if (cell.innerHTML === "" && !gameOver) {
-        cell.innerHTML = currentPlayer;
-        board[index] = currentPlayer;
-
         const winningCombo = checkWin(currentPlayer);
         if (winningCombo) {
           result.innerHTML = `PLAYER "${currentPlayer}" WINS!`;
