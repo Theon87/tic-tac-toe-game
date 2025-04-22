@@ -1,4 +1,5 @@
-const play = document.getElementById("play");
+const onePlayer = document.getElementById("onePlayer");
+const twoPlayer = document.getElementById("twoPlayer");
 const gameBoard = document.getElementById("gameBoard");
 const resetButton = document.getElementById("reset");
 const endButton = document.getElementById("end");
@@ -59,11 +60,12 @@ function checkWin(player) {
 }
 
 function playButton() {
-  play.addEventListener("click", function () {
+  twoPlayer.addEventListener("click", function () {
     gameOver = false;
     currentPlayer = "X";
     gameBoard.style.display = "table";
-    play.style.display = "none";
+    onePlayer.style.display = "none";
+    twoPlayer.style.display = "none";
     endButton.style.display = "block";
     playAgainButton.style.display = "block";
   });
@@ -83,7 +85,8 @@ function resetGame() {
     gameBoard.style.display = "table";
     resetButton.style.display = "none";
     endButton.style.display = "block";
-    play.style.display = "none";
+    onePlayer.style.display = "none";
+    twoPlayer.style.display = "none";
     playAgainButton.style.display = "block";
     cells.forEach((cell) => {
       cell.classList.remove("winningCell");
@@ -102,7 +105,8 @@ function playAgain() {
     resetButton.style.display = "none";
     gameBoard.style.display = "table";
     endButton.style.display = "block";
-    play.style.display = "none";
+    onePlayer.style.display = "none";
+    twoPlayer.style.display = "none";
     playAgainButton.style.display = "block";
     cells.forEach((cell) => {
       cell.classList.remove("winningCell");
