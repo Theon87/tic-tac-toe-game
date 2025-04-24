@@ -6,6 +6,11 @@ const endButton = document.getElementById("end");
 const playAgainButton = document.getElementById("playAgain");
 const lightDarkTheme = document.getElementById("lightDarkTheme");
 
+let onePlayerSelected = false;
+let twoPlayerSelected = false;
+let playerOne = false;
+let playerTwo = false;
+
 let summary = document.getElementById("summary");
 let result = document.getElementById("result");
 
@@ -59,15 +64,24 @@ function checkWin(player) {
   return null;
 }
 
-function playButton() {
+function playerTwoButton() {
   twoPlayer.addEventListener("click", function () {
-    gameOver = false;
-    currentPlayer = "X";
-    gameBoard.style.display = "table";
-    onePlayer.style.display = "none";
-    twoPlayer.style.display = "none";
-    endButton.style.display = "block";
-    playAgainButton.style.display = "block";
+    if (!twoPlayerSelected) {
+      onePlayerSelected = false;
+      twoPlayerSelected = true;
+      playerOne = false;
+      playerTwo = true;
+      gameOver = false;
+      currentPlayer = "X";
+      gameBoard.style.display = "table";
+      onePlayer.style.display = "none";
+      twoPlayer.style.display = "none";
+      endButton.style.display = "block";
+      playAgainButton.style.display = "block";
+      setupGameBoardForTwoPlayer();
+    }
+    console.log("one-player-selected: ", onePlayerSelected);
+    console.log("two-player-selected: ", twoPlayerSelected);
   });
 }
 
@@ -125,41 +139,45 @@ function endGame() {
   });
 }
 
-function setupGameBoard() {
-  cells.forEach((cell, index) => {
-    cell.addEventListener("click", function () {
-      if (cell.innerHTML === "" && !gameOver) {
-        cell.innerHTML = currentPlayer;
-        board[index] = currentPlayer;
+console.log("one-player-selected: ", onePlayerSelected);
+console.log("two-player-selected: ", twoPlayerSelected);
 
-        const winningCombo = checkWin(currentPlayer);
-        if (winningCombo) {
-          result.innerHTML = `PLAYER "${currentPlayer}" WINS!`;
-          gameOver = true;
+function setupGameBoardForTwoPlayer() {
+  if (twoPlayerSelected) {
+    cells.forEach((cell, index) => {
+      cell.addEventListener("click", function () {
+        if (cell.innerHTML === "" && !gameOver) {
+          cell.innerHTML = currentPlayer;
+          board[index] = currentPlayer;
 
-          winningCombo.forEach((index) => {
-            cells[index].classList.add("winningCell");
-          });
+          const winningCombo = checkWin(currentPlayer);
+          if (winningCombo) {
+            result.innerHTML = `PLAYER "${currentPlayer}" WINS!`;
+            gameOver = true;
 
-          if (currentPlayer === "X") {
-            countXWins++;
+            winningCombo.forEach((index) => {
+              cells[index].classList.add("winningCell");
+            });
+
+            currentPlayer === "X" ? countXWins++ : countOWins++;
+            return true;
+          } else if (checkDraw()) {
+            result.innerHTML = "DRAW";
+            gameOver = true;
+            return true;
           } else {
-            countOWins++;
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
           }
-        } else if (checkDraw()) {
-          result.innerHTML = "DRAW";
-          gameOver = true;
-        } else {
-          currentPlayer = currentPlayer === "X" ? "O" : "X";
         }
-      }
+      });
     });
-  });
+  }
+  console.log("one-player-selected: ", onePlayerSelected);
+  console.log("two-player-selected: ", twoPlayerSelected);
 }
 
 function playGame() {
-  playButton();
-  setupGameBoard();
+  playerTwoButton();
   playAgain();
   resetGame();
   endGame();
