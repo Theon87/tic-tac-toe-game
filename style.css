@@ -84,8 +84,8 @@ td {
   box-shadow: 3px 3px 3px 0px #999;
 }
 
-#twoPlayer h2,
-#onePlayer h2,
+#twoPlayer,
+#onePlayer,
 #result h2 {
   border: 1px solid white;
   border-radius: 10px;
@@ -105,15 +105,15 @@ td {
   transform: translateY(4px);
 }
 
-#twoPlayer h2:hover,
-#onePlayer h2:hover,
+#twoPlayer:hover,
+#onePlayer:hover,
 #playAgain:hover {
   background-color: #00aa00;
   box-shadow: 0 5px #333;
 }
 
-#twoPlayer h2:active,
-#onePlayer h2:active,
+#twoPlayer:active,
+#onePlayer:active,
 #playAgain:active {
   background-color: #00aa00;
   box-shadow: 3px 3px 3px 0px #999;
@@ -210,8 +210,8 @@ h3 {
 
 @media screen and (max-width: 375px) {
   #gameBoard,
-  #twoPlayer h2,
-  #onePlayer h2,
+  #twoPlayer,
+  #onePlayer,
   #playAgain,
   #end,
   #reset {
