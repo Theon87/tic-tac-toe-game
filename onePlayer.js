@@ -82,7 +82,7 @@ function setupGameBoardForOnePlayer() {
                 currentPlayer = "X";
               }
             }
-          }, 500);
+          }, 300);
         }
       });
     });
